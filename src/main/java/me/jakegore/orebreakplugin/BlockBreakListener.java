@@ -22,16 +22,16 @@ public class BlockBreakListener extends JavaPlugin implements Listener {
         
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
-        
-        if (item.equals(new ItemStack(Material.GOLDEN_PICKAXE))) {
-            getLogger().info("Code 1");
+        String itemName = item.getItemMeta().getDisplayName();
+
+        if (itemName.equals(OreBreakPlugin.ITEM_NAME)) {
             Block block = event.getBlock();
             
             if (block.getType().equals(Material.COAL_ORE)) {
                 getLogger().info("Code 2");
                 player.giveExpLevels(100);
             }
-            
+
         }
         
     }

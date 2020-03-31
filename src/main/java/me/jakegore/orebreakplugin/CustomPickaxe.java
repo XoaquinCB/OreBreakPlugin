@@ -17,7 +17,7 @@ public class CustomPickaxe {
         ItemStack pickaxe = new ItemStack(Material.GOLDEN_PICKAXE);
         ItemMeta im = pickaxe.getItemMeta();
         
-        im.setDisplayName(ChatColor.BOLD + "Ore Breaker");
+        im.setDisplayName(ChatColor.BOLD +  "" + ChatColor.GREEN + "Ore Breaker Pickaxe");
         im.setLore(Arrays.asList("Mines surrounding ores when a single ore is mined"));
         
         pickaxe.setItemMeta(im);

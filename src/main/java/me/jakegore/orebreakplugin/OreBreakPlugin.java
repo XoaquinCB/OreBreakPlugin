@@ -12,11 +12,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class OreBreakPlugin extends JavaPlugin {
 
+    public static final String ITEM_NAME = ChatColor.GREEN + "Ore Breaker Pickaxe";
+
     @Override
     public void onEnable() {
 
-        // code here
-      
+        getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+
     }
 
     /**
@@ -31,7 +33,7 @@ public class OreBreakPlugin extends JavaPlugin {
 
             ItemStack item = new ItemStack(Material.DIAMOND_PICKAXE);
             ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName(ChatColor.GREEN + "Ore Breaker Pickaxe");
+            meta.setDisplayName(ITEM_NAME);
             item.setItemMeta(meta);
 
             inventory.addItem(item);

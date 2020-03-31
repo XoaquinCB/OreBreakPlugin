@@ -1,5 +1,6 @@
 package me.jakegore.orebreakplugin;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -15,14 +16,16 @@ public class BlockBreakListener implements Listener {
         
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
+        String itemName = item.getItemMeta().getDisplayName();
         
-        if (item.equals(new ItemStack(Material.GOLDEN_PICKAXE))) {
+        if (itemName.equals(OreBreakPlugin.ITEM_NAME)) {
+
             Block block = event.getBlock();
             
             if (block.getType().equals(Material.COAL_ORE)) {
                 player.giveExpLevels(100);
             }
-            
+
         }
         
     }

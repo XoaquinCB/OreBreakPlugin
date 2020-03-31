@@ -3,7 +3,7 @@ version: 1.0
 main: me.jakegore.orebreakplugin.OreBreakPlugin
 
 commands:
-  /pickaxe:
+  orebreak:
     description: Give the user a pickaxe
     usage: /<command>
     permission: <plugin name>.basic

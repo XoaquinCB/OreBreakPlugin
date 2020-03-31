@@ -18,12 +18,12 @@ public class OreBreakPlugin extends JavaPlugin {
     }
 
     /**
-     * Gives the user a diamond pickaxe when they type "//pickaxe"
+     * Gives the user a diamond pickaxe when they type "/orebreak"
      */
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (cmd.getName().equalsIgnoreCase("/pickaxe")) {
+        if (cmd.getName().equalsIgnoreCase("orebreak")) {
             Player player = (Player) sender;
             PlayerInventory inventory = player.getInventory();
             inventory.addItem(new ItemStack(Material.DIAMOND_PICKAXE));

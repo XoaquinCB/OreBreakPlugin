@@ -6,9 +6,7 @@ public class OreBreakPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
-        getLogger().info("Ore Break Plugin Loaded");
-
+      
     }
 
 }

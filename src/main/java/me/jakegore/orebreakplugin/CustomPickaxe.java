@@ -9,16 +9,20 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class CustomPickaxe {
     
+    public static final Material ITEM_MATERIAL = Material.DIAMOND_PICKAXE;
+    public static final String ITEM_NAME = ChatColor.BOLD +  "" + ChatColor.GREEN + "Ore Breaker Pickaxe";
+    public static final String ITEM_LORE = "Mines surrounding ores when a single ore is mined";
+    
     /**
      * Returns the custom pickaxe used in this plugin
      */
     public static ItemStack getCustomPickaxe() {
         
-        ItemStack pickaxe = new ItemStack(Material.GOLDEN_PICKAXE);
+        ItemStack pickaxe = new ItemStack(ITEM_MATERIAL);
         ItemMeta im = pickaxe.getItemMeta();
         
-        im.setDisplayName(ChatColor.BOLD + "Ore Breaker");
-        im.setLore(Arrays.asList("Mines surrounding ores when a single ore is mined"));
+        im.setDisplayName(ITEM_NAME);
+        im.setLore(Arrays.asList(ITEM_LORE));
         
         pickaxe.setItemMeta(im);
         

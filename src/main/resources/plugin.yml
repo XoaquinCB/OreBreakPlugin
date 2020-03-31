@@ -1,3 +1,10 @@
 name: OreBreakPlugin
 version: 1.0
 main: me.jakegore.orebreakplugin.OreBreakPlugin
+
+commands:
+  /pickaxe:
+    description: Give the user a pickaxe
+    usage: /<command>
+    permission: <plugin name>.basic
+    permission-message: You don't have <permission>

@@ -6,6 +6,8 @@ public class OreBreakPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        // code here
       
     }
 

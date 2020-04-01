@@ -31,28 +31,26 @@ public class BlockBreakListener implements Listener {
         
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
-        String itemName = item.getItemMeta().getDisplayName();
         
         if (isItemValid(item)) {
-
             Block block = event.getBlock();
-            Material type = block.getType();
-
-            for (Material validBlock : validBlocks) {
-
-                if (type.equals(validBlock)) {
-                    player.giveExpLevels(100);  // left for testing purposes
-                    mineSurroundingBlocks(block);
-
-                    break;
-                }
-
+            
+            if (isBlockValid(block)) {
+                player.giveExpLevels(100);  // left for testing purposes
+                
+                event.setCancelled(true);
+                item.setType(Material.DIAMOND_PICKAXE);  // so that it mines the blocks as though it was a diamond pickaxe (in case it's not)
+                block.breakNaturally(item);
+                mineSurroundingBlocks(block, item);
             }
             
         }
         
     }
     
+    /**
+     * Checks if the item is a valid Ore Breaker
+     */
     private boolean isItemValid(ItemStack item) {
         
         ItemMeta meta = item.getItemMeta();
@@ -66,23 +64,44 @@ public class BlockBreakListener implements Listener {
         
     }
     
-    private void mineSurroundingBlocks(Block startBlock) {
+    /**
+     * Checks if the block is a valid ore block
+     */
+    private boolean isBlockValid(Block block) {
+        
+        Material type = block.getType();
+        
+        for (Material validBlock : validBlocks) {
+
+            if (type.equals(validBlock)) {
+                return true;
+            }
+
+        }
+        
+        return false;
+        
+    }
+    
+    /**
+     * Mines all the blocks surrounding startBlock that are of the same type, using the tool
+     */
+    private void mineSurroundingBlocks(Block startBlock, ItemStack tool) {
         
         for (Block block : getSurroundingBlocks(startBlock)) {
             
             if (block.getType().equals(startBlock.getType())) {
-                mineBlock(block);
-                mineSurroundingBlocks(block);
+                block.breakNaturally(tool);
+                mineSurroundingBlocks(block, tool);
             }
             
         }
         
     }
     
-    private void mineBlock(Block block) {
-        block.setType(Material.AIR);
-    }
-    
+    /**
+     * Returns a list containing all the blocks surrounding the input block
+     */
     private ArrayList<Block> getSurroundingBlocks(Block block) {
         
         ArrayList<Block> surrounding = new ArrayList<Block>();

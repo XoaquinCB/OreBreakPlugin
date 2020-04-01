@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class CustomPickaxe {
     
-    public static final Material ITEM_MATERIAL = Material.DIAMOND_PICKAXE;
+    public static final Material ITEM_MATERIAL = Material.GOLDEN_PICKAXE;
     public static final String ITEM_NAME = ChatColor.BOLD +  "" + ChatColor.GREEN + "Ore Breaker Pickaxe";
     public static final String ITEM_LORE = "Mines surrounding ores when a single ore is mined";
     

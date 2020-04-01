@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class CustomPickaxe {
@@ -27,6 +28,20 @@ public class CustomPickaxe {
         pickaxe.setItemMeta(im);
         
         return pickaxe;
+        
+    }
+    
+    public static final ShapedRecipe getRecipe() {
+        
+        ShapedRecipe recipe = new ShapedRecipe(null, getCustomPickaxe());
+        
+        recipe.shape("*%*","%P%","*%*");
+        
+        recipe.setIngredient('*', Material.ACACIA_BOAT);
+        recipe.setIngredient('%', Material.SUGAR);
+        recipe.setIngredient('P', Material.GOLDEN_PICKAXE);
+        
+        return recipe;
         
     }
     

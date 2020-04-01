@@ -66,7 +66,6 @@ public class BlockBreakListener implements Listener {
     
     private void mineSurroundingBlocks(Block startBlock) {
         
-        
         for (Block block : getSurroundingBlocks(startBlock)) {
             
             if (block.getType().equals(startBlock.getType())) {

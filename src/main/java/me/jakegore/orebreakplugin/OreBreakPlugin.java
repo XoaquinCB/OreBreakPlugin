@@ -21,13 +21,17 @@ public class OreBreakPlugin extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         
-        if (cmd.getName().equalsIgnoreCase("orebreak")) {
-            Player player = (Player) sender;
-            PlayerInventory inventory = player.getInventory();
+        if (cmd.getName().equalsIgnoreCase("orebreak") && args.length == 0) {
             
-            inventory.addItem(CustomPickaxe.getCustomPickaxe());
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                PlayerInventory inventory = player.getInventory();
+                
+                inventory.addItem(CustomPickaxe.getCustomPickaxe());
+                
+                return true;
+            }
             
-            return true;
         }
         
         return false;

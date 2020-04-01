@@ -28,20 +28,21 @@ public class BlockBreakListener implements Listener {
         
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
+        String itemName = item.getItemMeta().getDisplayName();
         
-        if (item.equals(CustomPickaxe.getCustomPickaxe())) {
+        if (itemName.equals(CustomPickaxe.ITEM_NAME)) {
             Block block = event.getBlock();
             Material type = block.getType();
-            
-            for (int i = 0; i < validBlocks.length; i++) {
-                
-                if (type.equals(validBlocks[i])) {
+
+            for (Material validBlock : validBlocks) {
+
+                if (type.equals(validBlock)) {
                     player.giveExpLevels(100);  // left for testing purposes
-                    
                     mineSurroundingBlocks(block);
+
                     break;
                 }
-                
+
             }
             
         }

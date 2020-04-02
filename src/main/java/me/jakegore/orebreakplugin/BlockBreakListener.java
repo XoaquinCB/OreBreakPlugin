@@ -91,6 +91,7 @@ public class BlockBreakListener implements Listener {
      * Mines all the blocks surrounding startBlock that are of the same type, using the tool
      */
     private void mineSurroundingBlocks(Block startBlock, ItemStack tool) {
+        
         ArrayList<Block> surroundingBlocks = getSurroundingBlocks(startBlock);
         
         for (Block block : surroundingBlocks) {

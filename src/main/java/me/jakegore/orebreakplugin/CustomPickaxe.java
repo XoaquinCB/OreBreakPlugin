@@ -4,9 +4,11 @@ import java.util.Arrays;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 
 public class CustomPickaxe {
     
@@ -31,15 +33,23 @@ public class CustomPickaxe {
         
     }
     
-    public static final ShapedRecipe getRecipe() {
+    /**
+     * Returns the recipe used to make the custom pickaxe
+     */
+    public static final ShapelessRecipe getRecipe(Plugin plugin) {
         
-        ShapedRecipe recipe = new ShapedRecipe(null, getCustomPickaxe());
+        NamespacedKey key = new NamespacedKey(plugin, "ore_breaker");
+        ShapelessRecipe recipe = new ShapelessRecipe(key, getCustomPickaxe());
         
-        recipe.shape("*%*","%P%","*%*");
-        
-        recipe.setIngredient('*', Material.ACACIA_BOAT);
-        recipe.setIngredient('%', Material.SUGAR);
-        recipe.setIngredient('P', Material.GOLDEN_PICKAXE);
+        recipe.addIngredient(Material.GOLDEN_PICKAXE);
+        recipe.addIngredient(Material.COAL_ORE);
+        recipe.addIngredient(Material.DIAMOND_ORE);
+        recipe.addIngredient(Material.EMERALD_ORE);
+        recipe.addIngredient(Material.GOLD_ORE);
+        recipe.addIngredient(Material.IRON_ORE);
+        recipe.addIngredient(Material.LAPIS_ORE);
+        recipe.addIngredient(Material.NETHER_QUARTZ_ORE);
+        recipe.addIngredient(Material.REDSTONE_ORE);
         
         return recipe;
         

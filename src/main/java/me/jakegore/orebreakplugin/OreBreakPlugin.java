@@ -12,6 +12,7 @@ public class OreBreakPlugin extends JavaPlugin {
     public void onEnable() {
         
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+        getServer().addRecipe(CustomPickaxe.getRecipe(this));
         
     }
     

@@ -55,12 +55,16 @@ public class BlockBreakListener implements Listener {
         
         ItemMeta meta = item.getItemMeta();
         
-        if (meta == null)
-            return false;
-        else if (meta.equals(CustomPickaxe.getCustomPickaxe().getItemMeta()))
-            return true;
-        else
-            return false;
+        if (meta != null) {
+            ItemMeta customMeta = CustomPickaxe.getCustomPickaxe().getItemMeta();
+            
+            if (meta.equals(customMeta)) {
+                return true;
+            }
+            
+        }
+        
+        return false;
         
     }
     
@@ -72,11 +76,11 @@ public class BlockBreakListener implements Listener {
         Material type = block.getType();
         
         for (Material validBlock : validBlocks) {
-
+            
             if (type.equals(validBlock)) {
                 return true;
             }
-
+            
         }
         
         return false;
@@ -87,8 +91,9 @@ public class BlockBreakListener implements Listener {
      * Mines all the blocks surrounding startBlock that are of the same type, using the tool
      */
     private void mineSurroundingBlocks(Block startBlock, ItemStack tool) {
+        ArrayList<Block> surroundingBlocks = getSurroundingBlocks(startBlock);
         
-        for (Block block : getSurroundingBlocks(startBlock)) {
+        for (Block block : surroundingBlocks) {
             
             if (block.getType().equals(startBlock.getType())) {
                 block.breakNaturally(tool);
